@@ -5,26 +5,18 @@ class MainController < ApplicationController
 	require 'net/http'
 	require 'net/https'
 
-	@@description = nil
-	@@img = nil
-
 	def index
 	end
 
 	def init
-		@@description = params[:anything][:description]
-		@@img = params[:anything][:pose]
+		@description = params[:anything][:description]
+		@img = params[:anything][:pose]
 		@name = "download1.png"
 		File.open(Rails.root.join('app', 'assets', 'images', @name), 'wb') do |file|
-		    file.write(@@img.read)
+		    file.write(@img.read)
 		end
-		# name_file = "download1.txt"
-		# File.open(Rails.root.join('app', 'assets', 'description', name_file), 'wb') do |file|
-		#     file.write(@@description)
-		# end
-		# system "./script.sh '40.125.69.98' '#{@@description}'"
-		@@description.gsub(" ", "+")
-		uri = "http://localhost:8080/process?desc=#{@@description}"
+		@description.gsub(" ", "+")
+		uri = "http://localhost:8080/process?desc=#{@description}"
 		url = URI.encode(uri)
 		url = URI.parse(url)
 		req = Net::HTTP::Post.new(url.to_s)
