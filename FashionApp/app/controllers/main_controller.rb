@@ -29,7 +29,6 @@ class MainController < ApplicationController
 			    file.write(Base64.decode64(response.body))
 			end
 		}
-		
 	end
 
 end
