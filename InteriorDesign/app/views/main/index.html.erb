@@ -1,0 +1,25 @@
+<div style="position: fixed; z-index: 1; padding-top: 100px; left: 0;top: 0; width: 100%; height: 100%; overflow: auto; padding-left: 80px;">
+	<div align="left" style="border: 2px solid #ffecca; border-radius: 8px; background-color: rgba(231, 122, 53, 0.14); padding: 50px 50px; width: 450px;">
+		<div class="row" style="margin: 5px 5px; height: 150px;">
+			<img style="float: left; margin: 0px 10px; border-radius: 10px; border: 2px solid #c9a27a; background-color: #ffecca; height: 100; width: 100;" src=<%= asset_path  'logo.png' %>>
+			<div style="display: inline; color: white;">
+				<i style="font-size: 200%;">Design your room</i>
+				<br>
+				please enter your description for the design (ex: short red skirt).
+				<br>
+				Thanks for visiting us.
+			</div>
+		</div>
+		<div align="center" style="display: block;">
+			<%= form_for :anything, url: "main/init" do |f| %>
+				<div>
+					<%= f.text_area :description, :placeholder => "Your Description ... ", :style => "width: 400px; height: 100px; padding: 8px 8px;" %>
+				</div>
+
+				<%= button_tag type: 'submit', style: "cursor: pointer; outline: 0; background: transparent; border: none; border-radius: 25px;" do %>
+					<i class="fa fa-arrow-circle-o-right fa-5x" aria-hidden="true" style="color: #fbdfb5;;"></i>
+			    <% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
