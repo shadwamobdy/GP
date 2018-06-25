@@ -13,11 +13,6 @@ class MainController < ApplicationController
 
 	def init
 	  	@description = params[:anything][:description]
-		# @img = params[:anything][:pose]
-		# @name = "download1.png"
-		# File.open(Rails.root.join('app', 'assets', 'images', @name), 'wb') do |file|
-		#     file.write(@img.read)
-		# end
 		@description.gsub(" ", "+")
 		uri = "http://#{@@IP}:8080/process?desc=#{@description}"
 		url = URI.encode(uri)
@@ -32,5 +27,6 @@ class MainController < ApplicationController
 			    file.write(Base64.decode64(response.body))
 			end
 		}
+		cl_image_tag("app/assets/images/output/output.png", :width=>250, :height=>250, :gravity=>"faces", :crop=>"fill")
 	end
 end
